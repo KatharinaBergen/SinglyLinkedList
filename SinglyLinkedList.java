@@ -120,10 +120,8 @@ public class SinglyLinkedList {
 	}
 	
 	public void printList(OutputHandler handler, SinglyLinkedList originalList) {
-		
-		OutputHandler su = handler;
 			
-		su.printList(originalList);
+		handler.printList(originalList);
 	}
 }
 	
