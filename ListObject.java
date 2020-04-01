@@ -31,7 +31,7 @@ public class ListObject {
 
 	@Override
 	public String toString() {
-		return "[object=" + object + "]";
+		return "" + object + "";
 	}
 	
 	

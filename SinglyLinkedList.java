@@ -2,8 +2,6 @@
 public class SinglyLinkedList {
 
 	private ListObject startObject = null;
-	private ListObject endObject = null;
-	private int lengthOfList = 0;
 	
 
 	//Constructors
@@ -14,20 +12,10 @@ public class SinglyLinkedList {
 	
 	public SinglyLinkedList(ListObject object) {
 		this.startObject = null;
-		this.endObject = null;
-		this.lengthOfList++;
 	}
 	
 	
 	//Setters and Getters
-	
-	public ListObject getEndObject() {
-		return endObject;
-	}
-
-	public void setEndObject(ListObject endObject) {
-		this.endObject = endObject;
-	}
 	
 	public ListObject getStartObject() {
 		return startObject;
@@ -36,40 +24,57 @@ public class SinglyLinkedList {
 	public void setStartObject(ListObject startObject) {
 		this.startObject = startObject;
 	}
-	
-	public int getLengthOfList() {
-		return lengthOfList;
-	}
-	
+
 	
 	//Methods
+	
+	public int getLengthOfList() {
+		int lengthOfList = 0;
+		
+		if (startObject.getNext() != null) {
+			ListObject currentObject = startObject.getNext();
+			lengthOfList += 2;
+			while (currentObject.getNext() != null && currentObject.getNext().getObject() != null) {
+				currentObject = currentObject.getNext();
+				lengthOfList++;
+			}
+		}
+		return lengthOfList;
+	}
 	
 	public void addObjectAtStart(ListObject object) {
 		
 		if(startObject == null) {
-			this.setEndObject(object);
-			this.setStartObject(getEndObject());
+			this.setStartObject(object);
 		}
 		else {
 			ListObject temporary = getStartObject();
 			this.setStartObject(object);
 			this.getStartObject().setNext(temporary);
 		}
-		lengthOfList++;
 	}
 	
 
 	public void addObjectAtEnd(ListObject object) {
 		
-		if(endObject == null) {
-			this.setEndObject(object);
-			this.setStartObject(object);
+		if(startObject == null) {
+			this.setStartObject(object);	
+		}
+		if(startObject.getNext() == null) {
+			startObject.setNext(object);	
 		}
 		else {
-			this.getEndObject().setNext(object);
-			this.setEndObject(object);
+			ListObject currentObject = startObject.getNext();
+			if (currentObject.getNext() == null) {
+				currentObject.setNext(object);
+			}
+			else {
+				while (currentObject.getNext() != null) {
+				currentObject = currentObject.getNext();
+				}
+				currentObject.setNext(object);
+			}
 		}
-		lengthOfList++;
 	}
 	
 	
@@ -81,24 +86,21 @@ public class SinglyLinkedList {
 		else {
 			this.setStartObject(getStartObject().getNext());
 		}
-		lengthOfList--;
 	}
 	
 	
 	public void deleteObjectAtEnd() {
 		
-		if(endObject == null) {
+		if(startObject == null) {
 			;
 		}
 		else {
-			ListObject object = startObject;
-			while (object.getNext() != null) {
-				this.setEndObject(object);	
-				object = object.getNext();
+			ListObject currentObject = startObject;
+			while (currentObject.getNext() != null) {
+				currentObject = currentObject.getNext();
 			}
-			object.setObject(null);
+			currentObject.setObject(null);
 		}
-		lengthOfList--;
 	}
 	
 	
@@ -107,36 +109,22 @@ public class SinglyLinkedList {
 		ListObject currentObject = startObject;
 		while (index < getLengthOfList()) {
 			if(object.getObject() == currentObject.getObject()) {
-				System.out.println("Your search is completed. The object was found at index " + index);
 				break;
 			}
 			else {
 				index++;
 				currentObject = currentObject.getNext();
 			}
-		
-			if (index >= getLengthOfList()) {
-				System.out.println("Your object is not in the list.");
-			}
 		}
 		return index;
-	}	
-	
-	
-	public void printList() {
-		ListObject object = startObject;
-		if (getLengthOfList() == 0) {
-			System.out.println("The list is empty");
-		}
-		else {
-			do {
-				System.out.println(object.toString());
-				object = object.getNext();
-			} 
-			while (object.getNext() != null && object.getNext().getObject() != null);
-			System.out.println(endObject.toString());
-		}
 	}
 	
-	
+	public void printList(OutputHandler handler, SinglyLinkedList originalList) {
+		
+		OutputHandler su = handler;
+			
+		su.printList(originalList);
+	}
 }
+	
+	

@@ -11,30 +11,47 @@ public class Main {
 		ListObject sixth = new ListObject(6);
 		
 		SinglyLinkedList list = new SinglyLinkedList();
-		list.addObjectAtEnd(first);
+		list.addObjectAtStart(first);
 		list.addObjectAtEnd(second);
 		list.addObjectAtEnd(third);
 		list.addObjectAtEnd(fourth);
 		list.addObjectAtEnd(fivth);
-		list.addObjectAtStart(sixth);
-		list.printList();
+		list.addObjectAtEnd(sixth);
+		list.getStartObject();
+		
+		
+		System.out.println("\nORIGINAL LIST");
+		OutputHandler handler = new ConsoleOutputHandler();
+		list.printList(handler, list);
+		
+		System.out.println("\nREVERSED LIST");
+		OutputHandler reverse = new ReversedConsoleOutputHandler();
+		list.printList(reverse, list);
+		
 		System.out.println("Length of list: " + list.getLengthOfList());
 		
 		list.deleteObjectAtStart();
 		System.out.println();
-		list.printList();
+
 		System.out.println("Length of list: " + list.getLengthOfList());
 		
 		list.deleteObjectAtEnd();
 		System.out.println();
-		list.printList();
+
+		list.getLengthOfList();
 		System.out.println("Length of list: " + list.getLengthOfList());
 		
+		System.out.println();
 		ListObject search = new ListObject("Third");
-		ListObject search2 = new ListObject(20);
-		list.searchList(search);
-		list.searchList(search2);
-		list.searchList(fourth);
+		int index = list.searchList(search);
+		
+		if (index >= list.getLengthOfList()) {
+			System.out.println("Your object is not in the list.");
+		}
+		else {
+			System.out.println("The object was found at index " + index);
+		}
+
 	}
 
 	
