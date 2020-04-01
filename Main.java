@@ -22,11 +22,11 @@ public class Main {
 		
 		System.out.println("\nORIGINAL LIST");
 		OutputHandler handler = new ConsoleOutputHandler();
-		list.printList(handler, list);
+		list.printList(handler);
 		
 		System.out.println("\nREVERSED LIST");
 		OutputHandler reverse = new ReversedConsoleOutputHandler();
-		list.printList(reverse, list);
+		list.printList(reverse);
 		
 		System.out.println("Length of list: " + list.getLengthOfList());
 		

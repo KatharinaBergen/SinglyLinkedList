@@ -103,6 +103,26 @@ public class SinglyLinkedList {
 		}
 	}
 	
+	public SinglyLinkedList reverseList() {
+		
+		SinglyLinkedList reversedList = new SinglyLinkedList();
+		
+		ListObject currentObjectOriginalList = new ListObject(getStartObject());
+		ListObject currentObject = new ListObject(getStartObject());
+		
+		reversedList.addObjectAtStart(currentObject);
+		
+		if (currentObjectOriginalList.getNext() == null) {
+			currentObjectOriginalList.setNext(getStartObject().getNext());
+		}
+		while (currentObjectOriginalList.getNext() != null) {
+			currentObjectOriginalList = currentObjectOriginalList.getNext();
+			currentObject = new ListObject(currentObjectOriginalList);
+			reversedList.addObjectAtStart(currentObject);
+		}
+		return reversedList;
+	}
+	
 	
 	public int searchList(ListObject object) {
 		int index = 0;
@@ -119,9 +139,21 @@ public class SinglyLinkedList {
 		return index;
 	}
 	
-	public void printList(OutputHandler handler, SinglyLinkedList originalList) {
+	public void printList(OutputHandler handler) {
 			
-		handler.printList(originalList);
+			ListObject object = getStartObject();
+			
+			if (getLengthOfList() == 0) {
+				handler.handleLine("The list is empty");
+			}
+			else {
+				do {
+					handler.handleLine(object.toString());
+					object = object.getNext();
+				} 
+				while (object.getNext() != null && object.getNext().getObject() != null);
+				handler.handleLine(object.toString());
+			}
 	}
 }
 	
