@@ -40,12 +40,28 @@ public class ListObject implements Comparable<Object>{
 	}
 	
 
+	
 	@Override
 	public int compareTo(Object newObject) {
-		int comparison = this.toString().compareToIgnoreCase(newObject.toString());
 		
-		//sets title to -1 if negative, keeps 0 if 0, +1 if positive for value previously calculated
-		comparison = (comparison < 0 ? -1 : (comparison == 0 ? 0 : 1));
+		int comparison = 0;
+		
+		if (newObject instanceof Medium && this instanceof Medium) {
+		
+			try {
+				Medium object = (Medium) newObject;
+				comparison = ((Medium)this).compareTo(object);
+			} catch (Exception e) {
+				System.out.println("You are trying to compare a sub to a parent object using the subs compareTo method.");;
+			}
+		}
+		
+		else {
+			comparison = this.toString().compareToIgnoreCase(newObject.toString());
+			
+			//sets title to -1 if negative, keeps 0 if 0, +1 if positive for value previously calculated
+			comparison = (comparison < 0 ? -1 : (comparison == 0 ? 0 : 1));
+		}
 		return  comparison;
 	}
 	

@@ -52,19 +52,28 @@ public class Medium extends ListObject {
 	@Override
 	public int compareTo(Object newObject)  {
 		
-		Medium o = (Medium) newObject;
-				
-		//priceComarison - compares price of this object to price of object o
-		//returns -1 if o has lower price, 0 if o has same price, +1 if o has higher price
-		int comparison = (this.price < o.price ? -1 : (this.price == o.price ? 0 : 1));
+		int comparison = 0;
 		
-		if(comparison == 0) {
-			//titleComparison - compares title of this object to title of object o
-			//returns negative int if o has lower price, 0 if o has same price, positive int if o has higher price
-			int titleComparison = (this.title.compareToIgnoreCase(o.title));
-			//sets title to -1 if negative, keeps 0 if 0, +1 if positive for value previously calculated
-			comparison += (titleComparison < 0 ? -1 : (titleComparison == 0 ? 0 : 1));
+		if (newObject instanceof Medium && this instanceof Medium) {
+
+			Medium o = (Medium) newObject;
+					
+			//priceComarison - compares price of this object to price of object o
+			//returns -1 if o has lower price, 0 if o has same price, +1 if o has higher price
+			comparison = (this.price < o.price ? -1 : (this.price == o.price ? 0 : 1));
+			
+			if(comparison == 0) {
+				//titleComparison - compares title of this object to title of object o
+				//returns negative int if o has lower price, 0 if o has same price, positive int if o has higher price
+				int titleComparison = (this.title.compareToIgnoreCase(o.title));
+				//sets title to -1 if negative, keeps 0 if 0, +1 if positive for value previously calculated
+				comparison += (titleComparison < 0 ? -1 : (titleComparison == 0 ? 0 : 1));
+			}
 		}
+		else {
+			comparison = super.compareTo(newObject);
+		}
+		
 		//returns sum, thus first sorting by priceComparison then by titleComparison
 		return comparison;
 	}
