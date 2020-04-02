@@ -48,8 +48,7 @@ public class ListObject implements Comparable<Object>{
 		
 		if (newObject instanceof Medium && this instanceof Medium) {
 
-				Medium object = (Medium) newObject;
-				comparison = ((Medium)this).compareTo(object);
+				comparison = this.compareTo(object);
 		}
 		
 		else {
