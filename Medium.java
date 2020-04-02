@@ -1,6 +1,6 @@
 package Sorted_SLL;
 
-public class Medium implements Comparable<Medium> {
+public class Medium extends ListObject {
 	
 	//Attributes
 	private String title;
@@ -8,6 +8,7 @@ public class Medium implements Comparable<Medium> {
 
 	//Constructor - parameterized
 	public Medium(String title, double price) {
+		super();
 		this.title = title;
 		this.price = price(price);
 	}
@@ -49,8 +50,10 @@ public class Medium implements Comparable<Medium> {
 	}
 
 	@Override
-	public int compareTo(Medium o) {
+	public int compareTo(Object newObject)  {
 		
+		Medium o = (Medium) newObject;
+				
 		//priceComarison - compares price of this object to price of object o
 		//returns -1 if o has lower price, 0 if o has same price, +1 if o has higher price
 		int comparison = (this.price < o.price ? -1 : (this.price == o.price ? 0 : 1));

@@ -24,6 +24,9 @@ public class Main {
 //		list.addObject(fourth);
 //		list.addObject(zero);
 		
+		Medium one = new Book("Crime and Punishment", "Fjodor Dostojewski", 60d);	
+		Medium two = new Book("The Bible", "Unknown", 3d);
+		System.out.println(one.getTitle().compareToIgnoreCase(two.getTitle()));
 		
 		//create Book Objects and save references in ArrayList
 		SinglyLinkedList list = new SinglyLinkedList();
@@ -32,7 +35,7 @@ public class Main {
 		medium = new Book("Crime and Punishment", "Fjodor Dostojewski", 60d);
 		list.addObject(medium);			
 		medium = new Book("The Bible", "Unknown", 3d);
-		list.addObject(medium);			
+		list.addObject(medium);	
 		medium = new CD("The Kangaroo Chronicles", "Hörbuch Hamburg", "Marc-Uwe Kling", 3d);
 		list.addObject(medium);	
 		medium = new CD("Hurra die Welt geht unter", "Vertigo Berlin", "KIZ", 60d);

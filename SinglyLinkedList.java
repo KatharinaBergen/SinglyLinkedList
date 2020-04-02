@@ -43,12 +43,10 @@ public class SinglyLinkedList {
 		return lengthOfList;
 	}
 	
-	public void addObject(Object newObject) {
-		
-		ListObject object = new ListObject(newObject);
+	public void addObject(ListObject newObject) {
 		
 		if(startObject == null) {
-			this.setStartObject(object);
+			this.setStartObject(newObject);
 		}
 		
 		else {
@@ -56,24 +54,24 @@ public class SinglyLinkedList {
 			ListObject currentObject = getStartObject();
 			ListObject temporaryObject = getStartObject();
 		
-			int comparison = currentObject.compareTo(object);
+			int comparison = currentObject.compareTo(newObject);
 			
 			if (comparison < 0) {
 				while (comparison < 0 && currentObject.getNext() != null) {
 					temporaryObject = currentObject;
 					currentObject = currentObject.getNext();
-					comparison = currentObject.compareTo(object);
+					comparison = currentObject.compareTo(newObject);
 				}
 				if (comparison < 0 && currentObject.getNext() == null ) {
-					addObjectAtEnd(object);
+					addObjectAtEnd(newObject);
 				}
 				else {
-					temporaryObject.setNext(object);
-					object.setNext(currentObject);
+					temporaryObject.setNext(newObject);
+					newObject.setNext(currentObject);
 				}
 			}
 			else {
-				addObjectAtStart(object);
+				addObjectAtStart(newObject);
 			}
 		}
 		
@@ -190,7 +188,7 @@ public class SinglyLinkedList {
 					handler.handleLine(object.toString());
 					object = object.getNext();
 				} 
-				while (object.getNext() != null && object.getNext().getObject() != null);
+				while (object.getNext() != null);
 				handler.handleLine(object.toString());
 			}
 	}
