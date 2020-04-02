@@ -47,13 +47,9 @@ public class ListObject implements Comparable<Object>{
 		int comparison = 0;
 		
 		if (newObject instanceof Medium && this instanceof Medium) {
-		
-			try {
+
 				Medium object = (Medium) newObject;
 				comparison = ((Medium)this).compareTo(object);
-			} catch (Exception e) {
-				System.out.println("You are trying to compare a sub to a parent object using the subs compareTo method.");;
-			}
 		}
 		
 		else {
