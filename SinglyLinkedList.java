@@ -1,3 +1,4 @@
+package Sorted_SLL;
 
 public class SinglyLinkedList {
 
@@ -41,6 +42,44 @@ public class SinglyLinkedList {
 		}
 		return lengthOfList;
 	}
+	
+	public void addObject(Object newObject) {
+		
+		ListObject object = new ListObject(newObject);
+		
+		if(startObject == null) {
+			this.setStartObject(object);
+		}
+		
+		else {
+
+			ListObject currentObject = getStartObject();
+			ListObject temporaryObject = getStartObject();
+		
+			int comparison = currentObject.compareTo(object);
+			
+			if (comparison < 0) {
+				while (comparison < 0 && currentObject.getNext() != null) {
+					temporaryObject = currentObject;
+					currentObject = currentObject.getNext();
+					comparison = currentObject.compareTo(object);
+				}
+				if (comparison < 0 && currentObject.getNext() == null ) {
+					addObjectAtEnd(object);
+				}
+				else {
+					temporaryObject.setNext(object);
+					object.setNext(currentObject);
+				}
+			}
+			else {
+				addObjectAtStart(object);
+			}
+		}
+		
+	}
+	
+
 	
 	public void addObjectAtStart(ListObject object) {
 		
@@ -155,6 +194,8 @@ public class SinglyLinkedList {
 				handler.handleLine(object.toString());
 			}
 	}
+
+
 }
 	
 	

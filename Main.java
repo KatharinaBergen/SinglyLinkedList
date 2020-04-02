@@ -1,58 +1,49 @@
+package Sorted_SLL;
+
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		ListObject first = new ListObject("First");
-		ListObject second = new ListObject("Second");
-		ListObject third = new ListObject("Third");
-		ListObject fourth = new ListObject(4);
-		ListObject fivth = new ListObject(5);
-		ListObject sixth = new ListObject(6);
+//		ListObject first = new ListObject();
+//		ListObject second = new ListObject(2);
+//		ListObject third = new ListObject(3);
+//		ListObject fourth = new ListObject(4);
+//		ListObject fivth = new ListObject(5);
+//		ListObject sixth = new ListObject(6);
+//		ListObject zero = new ListObject(0);
+//		
+//		System.out.println(first.compareTo(third));
+//		
+//		SinglyLinkedList list = new SinglyLinkedList();
+//		list.addObject(first);
+//		list.addObject(third);
+//		list.addObject(second);
+//		list.addObject(fivth);
+//		list.addObject(sixth);
+//		list.addObject(fourth);
+//		list.addObject(zero);
 		
+		
+		//create Book Objects and save references in ArrayList
 		SinglyLinkedList list = new SinglyLinkedList();
-		list.addObjectAtStart(first);
-		list.addObjectAtEnd(second);
-		list.addObjectAtEnd(third);
-		list.addObjectAtEnd(fourth);
-		list.addObjectAtEnd(fivth);
-		list.addObjectAtEnd(sixth);
-		list.getStartObject();
+		Medium medium = new Book("War and Peace", "Leo Tolstoi", 0d);
+		list.addObject(medium);	
+		medium = new Book("Crime and Punishment", "Fjodor Dostojewski", 60d);
+		list.addObject(medium);			
+		medium = new Book("The Bible", "Unknown", 3d);
+		list.addObject(medium);			
+		medium = new CD("The Kangaroo Chronicles", "Hörbuch Hamburg", "Marc-Uwe Kling", 3d);
+		list.addObject(medium);	
+		medium = new CD("Hurra die Welt geht unter", "Vertigo Berlin", "KIZ", 60d);
+		list.addObject(medium);	
+		medium = new Magazine("New Eastern Europe", "Kolegium Europy Wschodniej", 50.98d);
+		list.addObject(medium);	
+
 		
-		
-		System.out.println("\nORIGINAL LIST");
 		OutputHandler handler = new ConsoleOutputHandler();
 		list.printList(handler);
-		
-		System.out.println("\nREVERSED LIST");
-		OutputHandler reverse = new ReversedConsoleOutputHandler();
-		list.printList(reverse);
-		
-		System.out.println("Length of list: " + list.getLengthOfList());
-		
-		list.deleteObjectAtStart();
-		System.out.println();
 
-		System.out.println("Length of list: " + list.getLengthOfList());
-		
-		list.deleteObjectAtEnd();
-		System.out.println();
-
-		list.getLengthOfList();
-		System.out.println("Length of list: " + list.getLengthOfList());
-		
-		System.out.println();
-		ListObject search = new ListObject("Third");
-		int index = list.searchList(search);
-		
-		if (index >= list.getLengthOfList()) {
-			System.out.println("Your object is not in the list.");
-		}
-		else {
-			System.out.println("The object was found at index " + index);
-		}
 
 	}
-
-	
 }
